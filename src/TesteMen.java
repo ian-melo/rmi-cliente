@@ -11,10 +11,12 @@ public class TesteMen {
         try {
             //MensageiroAcesso
             LocateRegistry.getRegistry("127.0.0.1");
+            //LocateRegistry.getRegistry("192.168.xxx.x");
             menA = (MensageiroAcesso) Naming.lookup("rmi://localhost:14001/MensageiroAcesso");
             
             //MensageiroAcesso
             LocateRegistry.getRegistry("127.0.0.1");
+            //LocateRegistry.getRegistry("192.168.xxx.x");
             menV = (MensageiroVerifica) Naming.lookup("rmi://localhost:14002/MensageiroVerifica");
             
             menA.sair();
