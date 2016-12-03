@@ -1,3 +1,7 @@
+
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
+
 public class FormRegistro extends javax.swing.JFrame {
 
     public FormRegistro() {
@@ -58,6 +62,11 @@ public class FormRegistro extends javax.swing.JFrame {
         lb_id = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jLabel1.setText("Razão Social:");
 
@@ -228,8 +237,7 @@ public class FormRegistro extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel13)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txt_nomeRepresentante, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jScrollPane1))
+                            .addComponent(txt_nomeRepresentante, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btn_inserir)
                         .addGap(18, 18, 18)
@@ -242,7 +250,8 @@ public class FormRegistro extends javax.swing.JFrame {
                         .addComponent(jLabel21)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lb_id)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -312,9 +321,7 @@ public class FormRegistro extends javax.swing.JFrame {
                         .addComponent(jLabel14)
                         .addComponent(txt_CPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(6, 6, 6)
-                            .addComponent(jLabel15))
+                        .addComponent(jLabel15)
                         .addComponent(txt_foneReprese, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -333,6 +340,10 @@ public class FormRegistro extends javax.swing.JFrame {
     private void btn_procurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_procurarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_procurarActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+       preenchetabela();
+    }//GEN-LAST:event_formWindowActivated
 
     public void inserir() {
 
@@ -354,6 +365,38 @@ public class FormRegistro extends javax.swing.JFrame {
 
     }
 
+        public void preenchetabela() {
+        //Cabeçalho
+        Vector cabecalho = new Vector();
+        cabecalho.add("Razão Social");
+        cabecalho.add("Endereço");
+        cabecalho.add("Bairro");
+        cabecalho.add("Cidade");
+        cabecalho.add("Estado");
+        cabecalho.add("País");
+        cabecalho.add("CEP");
+        cabecalho.add("Telefone (DDD)");
+        cabecalho.add("CNPJ:");
+        cabecalho.add("Inscrição Estadual");
+        cabecalho.add("Inscrição Municipal");
+        cabecalho.add("E-mail");
+        cabecalho.add("Data de sua constituição");
+        cabecalho.add("Atividades desenvolvidas");
+        cabecalho.add("Gênero da atividade");
+        cabecalho.add("Espece da atividade");
+        cabecalho.add("Nome do Representante Legal");
+        cabecalho.add("CPF do representante");
+        cabecalho.add("Fone do representante");
+
+        //Itens
+        Vector dados = new Vector();
+        Vector item = null;
+
+        dados.add(item);
+        DefaultTableModel modeloTabela = new DefaultTableModel();
+        modeloTabela.setDataVector(dados, cabecalho);
+        tb_cadastrados.setModel(modeloTabela);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_alterar;
     private javax.swing.JButton btn_excluir;

@@ -62,6 +62,11 @@ public class FormConsulta extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tb_parcial.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tb_parcialMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tb_parcial);
 
         jLabel1.setText("Endereço:");
@@ -245,46 +250,54 @@ public class FormConsulta extends javax.swing.JFrame {
         procurarLimitado();
     }//GEN-LAST:event_btn_procurarActionPerformed
 
+    private void tb_parcialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_parcialMouseClicked
+        int linha;
+        if (evt.getClickCount() == 1) {
+            linha = tb_parcial.getSelectedRow();
+            //escolhido = tb_parcial.getItens().get(linha);
+            //System.out.println(escolhido.getLivro().getTitulo());
+        }
+    }//GEN-LAST:event_tb_parcialMouseClicked
+
     public void procurarLimitado() {
         MensageiroRegistro mRegistro = null;
-        
+
         try {
             LocateRegistry.getRegistry("127.0.0.1");
             //LocateRegistry.getRegistry("192.168.58.1");//Fabio
-            String[] item = new String[25];
+            String[] res = new String[25];
             mRegistro = (MensageiroRegistro) Naming.lookup("rmi://localhost:14003/MensageiroRegistro");
-            
-            item = mRegistro.procurarLimitado(txt_cnpj.getText());
-            
-            
-            for (int i=0; item.length <= i; i++){
-                System.out.println(item[i]);//apenas um teste
+
+            res = mRegistro.procurarLimitado(txt_cnpj.getText());
+
+            for (int i = 0; res.length <= i; i++) {
+                System.out.println(res[i]);//apenas um teste
             }
-            
+
         } catch (RemoteException ex) {
             Logger.getLogger(FormConsulta.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NotBoundException ex) {
             Logger.getLogger(FormConsulta.class.getName()).log(Level.SEVERE, null, ex);
         } catch (MalformedURLException ex) {
             Logger.getLogger(FormConsulta.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (Exception ex){//pega tudo
-            System.out.println(ex);
+        } catch (Exception ex) {
+            System.out.println(ex);//pega tudo
         }
-        
+
     }
-    
-    public void preenchetabela(){
+
+    public void preenchetabela() {
         //Cabeçalho
         Vector cabecalho = new Vector();
         cabecalho.add("Endereço");
         cabecalho.add("CEP");
         cabecalho.add("Atividades desenvolvidas");
         cabecalho.add("Gênero da atividade");
-        
+
         //Itens
         Vector dados = new Vector();
         Vector item = null;
-        
+
         dados.add(item);
         DefaultTableModel modeloTabela = new DefaultTableModel();
         modeloTabela.setDataVector(dados, cabecalho);

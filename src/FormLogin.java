@@ -115,8 +115,11 @@ public class FormLogin extends javax.swing.JFrame {
 
             if (mAcesso.entrar(txt_login.getText(), txt_senha.getText()) == true) {
                 JOptionPane.showMessageDialog(rootPane, "Acesso");
-                FormPrincipal fPrincipal = new FormPrincipal();
-                fPrincipal.setVisible(true);
+                //FormPrincipal fPrincipal = new FormPrincipal();
+                //fPrincipal.setVisible(true);
+                
+                FormRegistro fRegistro = new FormRegistro();
+                fRegistro.setVisible(true);
                 dispose();
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Acesso negado");
