@@ -263,8 +263,8 @@ public class FormConsulta extends javax.swing.JFrame {
         MensageiroRegistro mRegistro = null;
 
         try {
-            LocateRegistry.getRegistry("127.0.0.1");
-            //LocateRegistry.getRegistry("192.168.58.1");//Fabio
+            //LocateRegistry.getRegistry("127.0.0.1");
+            LocateRegistry.getRegistry("192.168.58.1");//Fabio
             String[] res = new String[25];
             mRegistro = (MensageiroRegistro) Naming.lookup("rmi://localhost:14003/MensageiroRegistro");
 
