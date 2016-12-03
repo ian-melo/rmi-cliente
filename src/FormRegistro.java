@@ -1,5 +1,12 @@
 
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 public class FormRegistro extends javax.swing.JFrame {
@@ -362,6 +369,36 @@ public class FormRegistro extends javax.swing.JFrame {
     }
 
     public void listar() {
+
+        MensageiroRegistro mRegistro = null;
+
+        try {
+            //LocateRegistry.getRegistry("127.0.0.1");
+            LocateRegistry.getRegistry("192.168.58.1");//Fabio
+            Object[][] lTudo = new Object[25][20];
+            mRegistro = (MensageiroRegistro) Naming.lookup("rmi://localhost:14003/MensageiroRegistro");
+
+            lTudo = mRegistro.listar();
+
+            for (Object ver : lTudo) {
+                System.out.println(ver.toString());///teste
+                
+                
+            }
+            
+            for (int i = 1; lTudo.length <= i; i++) {
+                System.out.println(lTudo.toString());//apenas um teste
+            }
+
+        } catch (RemoteException ex) {
+            Logger.getLogger(FormConsulta.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NotBoundException ex) {
+            Logger.getLogger(FormConsulta.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(FormConsulta.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            System.out.println(ex);//pega tudo
+        }
 
     }
 

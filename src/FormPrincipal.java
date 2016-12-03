@@ -28,22 +28,22 @@ public class FormPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void sair(){
+    public void sair() {
         MensageiroAcesso menA = null;
         try {
             //MensageiroAcesso
             //LocateRegistry.getRegistry("127.0.0.1");
             LocateRegistry.getRegistry("192.168.58.1");
             menA = (MensageiroAcesso) Naming.lookup("rmi://localhost:14001/MensageiroAcesso");
-            
 
             menA.sair();
-   
+
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             System.exit(1);
         }
     }
+
     public static void main(String args[]) {
         /* Set the Metal look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
