@@ -12,6 +12,8 @@ import javax.swing.table.DefaultTableModel;
 
 public class FormConsulta extends javax.swing.JFrame {
 
+    String[][] tu = new String[verificaTamanho()][22];//coloca os itens gerados do BD
+
     public FormConsulta() {
         initComponents();
     }
@@ -33,7 +35,7 @@ public class FormConsulta extends javax.swing.JFrame {
         txt_estado = new javax.swing.JTextField();
         txt_pais = new javax.swing.JTextField();
         txt_CEP = new javax.swing.JTextField();
-        txt_atividadesDesenvolvidas = new javax.swing.JTextField();
+        txt_atividadesExercidas = new javax.swing.JTextField();
         txt_generoAtiv = new javax.swing.JTextField();
         txt_especeAtiv = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -48,6 +50,7 @@ public class FormConsulta extends javax.swing.JFrame {
         txt_numero = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         txt_comple = new javax.swing.JTextField();
+        btn_voltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -98,7 +101,7 @@ public class FormConsulta extends javax.swing.JFrame {
 
         jLabel7.setText("CEP:");
 
-        jLabel8.setText("Atividades desenvolvidas");
+        jLabel8.setText("Atividades Exercidas:");
 
         jLabel9.setText("Gênero da atividade");
 
@@ -125,6 +128,13 @@ public class FormConsulta extends javax.swing.JFrame {
 
         jLabel13.setText("Complemento: ");
 
+        btn_voltar.setText("Voltar ao Login");
+        btn_voltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_voltarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -136,65 +146,69 @@ public class FormConsulta extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addGap(24, 24, 24)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_cnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_logradouro, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(46, 46, 46)
-                        .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_numero, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addContainerGap(399, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel5)
-                                            .addComponent(jLabel6))
-                                        .addGap(27, 27, 27)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txt_pais, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txt_estado, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel2)
-                                            .addComponent(jLabel3))
-                                        .addGap(27, 27, 27)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txt_cidade, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txt_bairro, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(44, 44, 44)
+                                        .addComponent(jLabel11)
+                                        .addGap(24, 24, 24)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel10)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txt_especeAtiv))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel9)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txt_generoAtiv))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel8)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txt_atividadesDesenvolvidas))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txt_CEP, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(btn_procurar)
+                                    .addComponent(txt_cnpj)
+                                    .addComponent(txt_logradouro, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE))
+                                .addGap(46, 46, 46)
+                                .addComponent(jLabel12)
+                                .addGap(201, 201, 201))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel13)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_comple)))
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_voltar)))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txt_numero, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel5)
+                                                .addComponent(jLabel6))
+                                            .addGap(27, 27, 27)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(txt_pais, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txt_estado, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel2)
+                                                .addComponent(jLabel3))
+                                            .addGap(27, 27, 27)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(txt_cidade, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txt_bairro, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGap(44, 44, 44)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel10)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txt_especeAtiv))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel9)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txt_generoAtiv))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel8)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txt_atividadesExercidas))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel7)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txt_CEP, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(btn_procurar)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel13)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txt_comple))))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -239,7 +253,7 @@ public class FormConsulta extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
-                            .addComponent(txt_atividadesDesenvolvidas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_atividadesExercidas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
@@ -248,12 +262,14 @@ public class FormConsulta extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
                             .addComponent(txt_especeAtiv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addComponent(btn_procurar)
                 .addGap(29, 29, 29)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(btn_voltar))
                 .addContainerGap())
         );
 
@@ -269,7 +285,15 @@ public class FormConsulta extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_estadoActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        preenchetabela();
+        try {
+
+            preenchetabela();
+
+        } catch (RemoteException | NotBoundException | MalformedURLException ex) {
+            Logger.getLogger(FormConsulta.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
     }//GEN-LAST:event_formWindowActivated
 
     private void btn_procurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_procurarActionPerformed
@@ -281,10 +305,15 @@ public class FormConsulta extends javax.swing.JFrame {
         int linha;
         if (evt.getClickCount() == 1) {
             linha = tb_parcial.getSelectedRow();
-            //escolhido = tb_parcial.getItens().get(linha);
-            //System.out.println(escolhido.getLivro().getTitulo());
+            preencheCampos(linha);
         }
     }//GEN-LAST:event_tb_parcialMouseClicked
+
+    private void btn_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_voltarActionPerformed
+        FormLogin fLogin = new FormLogin();
+        fLogin.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_voltarActionPerformed
 
     public void procurarLimitado() {
         MensageiroRegistro mRegistro = null;
@@ -302,7 +331,7 @@ public class FormConsulta extends javax.swing.JFrame {
                 return;
             }
 
-            txt_atividadesDesenvolvidas.setText(res[0]); //[0] - Atividades Exercidas
+            txt_atividadesExercidas.setText(res[0]); //[0] - Atividades Exercidas
             txt_generoAtiv.setText(res[1]);              //[1] - Gênero da Atividade
             txt_especeAtiv.setText(res[2]);              //[2] - Espécie de Atividade
             txt_CEP.setText(res[3]);                     //[3] - CEP
@@ -322,26 +351,53 @@ public class FormConsulta extends javax.swing.JFrame {
 
     }
 
-    public void preenchetabela() {
+    public void preenchetabela() throws RemoteException, NotBoundException, MalformedURLException {
+        MensageiroRegistro mR = null;
+
+        LocateRegistry.getRegistry("192.168.56.1");//Fabio
+
+        mR = (MensageiroRegistro) Naming.lookup("rmi://localhost:14003/MensageiroRegistro");
+
+        Object[][] retorno = mR.listar();//esta linha
+
         //Cabeçalho
         Vector cabecalho = new Vector();
         cabecalho.add("CEP");
         cabecalho.add("Logradouro");
-        cabecalho.add("Atividades desenvolvidas");
-        cabecalho.add("Gênero da atividade");
+        cabecalho.add("Atividades Exercidas");
+        cabecalho.add("Telefone");
 
         //Itens
         Vector dados = new Vector();
         Vector item = null;
 
-        dados.add(item);
+        if (retorno != null) {
+            System.out.println(retorno.length);//11 - 14 - 8 - 3
+            for (int i = 0; i < retorno.length; i++) {
+                item = new Vector();
+
+                item.add(retorno[i][11]);
+                item.add(retorno[i][14]);
+                item.add(retorno[i][8]);
+                item.add(retorno[i][3]);
+                dados.add(item);
+
+                for (int j = 0; j <= 21; j++) {
+                    tu[i][j] = (String) retorno[i][j];//coloca os itens na matriz por linha<<<<<<<<<<<<<<<<<<<
+                }
+
+            }
+        } else {
+            System.out.println("Sem resultados ou problema.");
+        }
+
         DefaultTableModel modeloTabela = new DefaultTableModel();
         modeloTabela.setDataVector(dados, cabecalho);
         tb_parcial.setModel(modeloTabela);
     }
 
     public void limpa() {
-        txt_atividadesDesenvolvidas.setText("");
+        txt_atividadesExercidas.setText("");
         txt_generoAtiv.setText("");
         txt_especeAtiv.setText("");
         txt_CEP.setText("");
@@ -355,8 +411,44 @@ public class FormConsulta extends javax.swing.JFrame {
 
     }
 
+    public void preencheCampos(int linha) {
+        txt_cnpj.setText(tu[linha][0]);
+        txt_atividadesExercidas.setText(tu[linha][8]);
+        txt_generoAtiv.setText(tu[linha][9]);
+        txt_especeAtiv.setText(tu[linha][10]);
+        txt_CEP.setText(tu[linha][11]);
+        txt_numero.setText(tu[linha][12]);
+        txt_comple.setText(tu[linha][13]);
+        txt_logradouro.setText(tu[linha][14]);
+        txt_bairro.setText(tu[linha][15]);
+        txt_cidade.setText(tu[linha][16]);
+        txt_estado.setText(tu[linha][17]);
+        txt_pais.setText(tu[linha][18]);
+    }
+
+    public int verificaTamanho() {//vai dar erro se for zero
+        int valor = 0;
+        MensageiroRegistro mR = null;
+        try {
+
+            LocateRegistry.getRegistry("192.168.56.1");//Fabio
+            mR = (MensageiroRegistro) Naming.lookup("rmi://localhost:14003/MensageiroRegistro");
+            Object[][] retorno = mR.listar();//esta linha
+            valor = retorno.length;
+
+        } catch (RemoteException ex) {
+            Logger.getLogger(FormConsulta.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            System.out.println(ex);//tudo
+        }
+
+        return valor;
+    }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_procurar;
+    private javax.swing.JButton btn_voltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -373,7 +465,7 @@ public class FormConsulta extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tb_parcial;
     private javax.swing.JTextField txt_CEP;
-    private javax.swing.JTextField txt_atividadesDesenvolvidas;
+    private javax.swing.JTextField txt_atividadesExercidas;
     private javax.swing.JTextField txt_bairro;
     private javax.swing.JTextField txt_cidade;
     private javax.swing.JFormattedTextField txt_cnpj;
