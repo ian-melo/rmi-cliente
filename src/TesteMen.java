@@ -10,57 +10,89 @@ import java.util.logging.Logger;
 public class TesteMen {
 
     public static void main(String[] args) {
+        //testaConsultaLim();//OK
         testaConsulta();
-        
-        
-//        MensageiroAcesso menA = null;
-//        MensageiroVerifica menV = null;
-//        String val;
-//        try {
-//            //MensageiroAcesso
-//            //LocateRegistry.getRegistry("127.0.0.1");
-//            LocateRegistry.getRegistry("192.168.58.1");
-//            menA = (MensageiroAcesso) Naming.lookup("rmi://localhost:14001/MensageiroAcesso");
-//            
-//            //MensageiroAcesso
-//            //LocateRegistry.getRegistry("127.0.0.1");
-//            LocateRegistry.getRegistry("192.168.58.1");
-//            menV = (MensageiroVerifica) Naming.lookup("rmi://localhost:14002/MensageiroVerifica");
-//            
-//            menA.sair();
-//            System.out.println(menV.isUsuarioLogado());
-//        } catch (Exception ex) {
-//            System.out.println(ex.getMessage());
-//            System.exit(1);
-//        }
     }
     
-    public static void testaConsulta(){
-           MensageiroRegistro mRegistro = null;
-        
+    public static void testaConsultaLim(){
         try {
+            System.out.println("-----Teste de consulta limitada----");
+            
             LocateRegistry.getRegistry("127.0.0.1");
-            //LocateRegistry.getRegistry("192.168.58.1");//Fabio
-            String[] res = new String[25];
-            mRegistro = (MensageiroRegistro) Naming.lookup("rmi://localhost:14003/MensageiroRegistro");
+            MensageiroRegistro mRegistro = (MensageiroRegistro) Naming.lookup("rmi://localhost:14003/MensageiroRegistro");
+            String[] res = mRegistro.procurarLimitado("96.362.345/0001-64");
             
-            res = mRegistro.procurarLimitado("96.362.345/0001-64");
-            
-            
-            for (int i=0; res.length <= i; i++){
-                System.out.println(res[i]);//apenas um teste
+            for (String re : res) {
+                System.out.println(re);
             }
+        } catch (RemoteException ex) {
+            Logger.getLogger(FormConsulta.class.getName()).log(Level.SEVERE, null, ex);
+            System.exit(1);
+        } catch (NotBoundException ex) {
+            Logger.getLogger(FormConsulta.class.getName()).log(Level.SEVERE, null, ex);
+            System.exit(2);
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(FormConsulta.class.getName()).log(Level.SEVERE, null, ex);
+            System.exit(3);
+        } catch (Exception ex){
+            System.out.println(ex);
+            System.exit(4);
+        }
+    }
+    
+    public static void testaConsulta() {
+        try {
+            System.out.println("-----Teste de consulta----");
+            
+            //MensageiroAcesso
+            LocateRegistry.getRegistry("127.0.0.1");
+            MensageiroAcesso menA = (MensageiroAcesso) Naming.lookup("rmi://localhost:14001/MensageiroAcesso");
+            
+            //MensageiroAcesso
+            LocateRegistry.getRegistry("127.0.0.1");
+            MensageiroVerifica menV = (MensageiroVerifica) Naming.lookup("rmi://localhost:14002/MensageiroVerifica");
+            
+            //MensageiroRegistro
+            LocateRegistry.getRegistry("127.0.0.1");
+            MensageiroRegistro menR = (MensageiroRegistro) Naming.lookup("rmi://localhost:14003/MensageiroRegistro");
+            
+            /*
+            if(menA.entrar("admin", "123")) {
+                System.out.println("Login efetuado com sucesso!!!");
+            } else {
+                System.out.println("Problema no login");
+                //return;
+            }*/
+            
+            if(menV.isUsuarioLogado()) {
+                System.out.println("Sucesso na verificação!!!");
+            } else {
+                System.out.println("Problema na verificação");
+                return;
+            }
+            
+            String[] res;
+            if((res = menR.procurar("34.041.258/0001-58", "admin", "123")) != null)
+                System.out.println(res[0] + "\n" + res[1] + "\n" + res[2] + "\n" +
+                        res[3] + "\n" + res[4] + "\n" + res[5] + "\n" + res[6] + "\n" +
+                        res[7] + "\n" + res[8] + "\n" + res[9] + "\n" + res[10] +
+                        res[18] + "\n" + res[19] + "\n" + res[20] + "\n" + res[21]);
+            else
+                System.out.println("Não deu.");
+            
             
         } catch (RemoteException ex) {
             Logger.getLogger(FormConsulta.class.getName()).log(Level.SEVERE, null, ex);
+            System.exit(1);
         } catch (NotBoundException ex) {
             Logger.getLogger(FormConsulta.class.getName()).log(Level.SEVERE, null, ex);
+            System.exit(2);
         } catch (MalformedURLException ex) {
             Logger.getLogger(FormConsulta.class.getName()).log(Level.SEVERE, null, ex);
+            System.exit(3);
         } catch (Exception ex){
-            System.out.println(ex);//pega tudo
+            System.out.println(ex);
+            System.exit(4);
         }
-     
     }
-    
 }
