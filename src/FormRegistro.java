@@ -253,15 +253,6 @@ public class FormRegistro extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_CNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel8)
@@ -270,14 +261,23 @@ public class FormRegistro extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel13)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_nomeRepresentante, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_complemento, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txt_nomeRepresentante, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_CNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt_complemento, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt_telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel14)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -285,7 +285,7 @@ public class FormRegistro extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel15)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_foneReprese, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txt_foneReprese, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -309,7 +309,7 @@ public class FormRegistro extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_inscMunicipal, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txt_inscMunicipal, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -342,13 +342,17 @@ public class FormRegistro extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txt_CNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
                     .addComponent(txt_razaoSocial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_nomeFantasia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
                     .addComponent(txt_CEP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -369,13 +373,9 @@ public class FormRegistro extends javax.swing.JFrame {
                 .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txt_complemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_complemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(txt_telefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(txt_CNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_telefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -415,13 +415,15 @@ public class FormRegistro extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_inserir, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_alterar)
-                    .addComponent(btn_excluir)
-                    .addComponent(btn_procurar)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btn_alterar)
+                        .addComponent(btn_excluir)
+                        .addComponent(btn_procurar)
+                        .addComponent(jButton1)
+                        .addComponent(jButton2))
+                    .addComponent(btn_inserir, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         pack();
@@ -431,7 +433,6 @@ public class FormRegistro extends javax.swing.JFrame {
         try {
 
             procurar();
-            habilitarBotoes();
 
         } catch (RemoteException | NotBoundException | MalformedURLException ex) {
             Logger.getLogger(FormRegistro.class.getName()).log(Level.SEVERE, null, ex);
@@ -457,15 +458,33 @@ public class FormRegistro extends javax.swing.JFrame {
     private void btn_excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excluirActionPerformed
         int val = JOptionPane.showConfirmDialog(rootPane, "Deseja mesmo excluir?");
         if (val == 0) {
-            excluir();
-            desabilitarBotoes();
+            try {
+
+                excluir();
+                desabilitarBotoes();
+
+            } catch (RemoteException | NotBoundException | MalformedURLException ex) {
+                Logger.getLogger(FormRegistro.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
+                System.out.println(ex);//tudo
+            }
+
         }
     }//GEN-LAST:event_btn_excluirActionPerformed
 
     private void btn_alterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alterarActionPerformed
         int val = JOptionPane.showConfirmDialog(rootPane, "Deseja mesmo alterar?");
         if (val == 0) {
-            alterar();
+            try {
+                
+                alterar();
+                desabilitarBotoes();
+                
+            } catch (RemoteException | NotBoundException | MalformedURLException ex) {
+                Logger.getLogger(FormRegistro.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex){
+                System.out.println(ex);
+            }
             desabilitarBotoes();
         }
     }//GEN-LAST:event_btn_alterarActionPerformed
@@ -487,6 +506,7 @@ public class FormRegistro extends javax.swing.JFrame {
         try {
 
             inserir();
+            limpar();
 
         } catch (NotBoundException | RemoteException | MalformedURLException ex) {
             Logger.getLogger(FormRegistro.class.getName()).log(Level.SEVERE, null, ex);
@@ -572,11 +592,84 @@ public class FormRegistro extends javax.swing.JFrame {
 //        JOptionPane.showMessageDialog(rootPane, item[21]);
     }
 
-    public void alterar() {
+    public void alterar() throws RemoteException, NotBoundException, MalformedURLException {
+        MensageiroRegistro mRegistro = null;
+        LocateRegistry.getRegistry("192.168.0.103");//F
+        mRegistro = (MensageiroRegistro) Naming.lookup("rmi://localhost:14003/MensageiroRegistro");
 
+        String[] itens = new String[22];
+
+        itens[0] = txt_CNPJ.getText();
+        itens[1] = txt_razaoSocial.getText();
+        itens[2] = txt_nomeFantasia.getText();
+        itens[3] = txt_telefone.getText();
+        itens[4] = txt_inscMunicipal.getText();
+        itens[5] = txt_inscEstadual.getText();
+        itens[6] = txt_email.getText();
+        itens[7] = txt_dataConstituicao.getText();
+        itens[8] = txt_atividadesDesenvolvidas.getText();
+        itens[9] = txt_generoAtividade.getText();
+        itens[10] = txt_especieAtividade.getText();
+        itens[11] = txt_CEP.getText();
+        itens[12] = txt_numero.getText();
+        itens[13] = txt_complemento.getText();
+        itens[14] = txt_logradouro.getText();
+        itens[15] = txt_bairro.getText();
+        itens[16] = txt_cidade.getText();
+        itens[17] = txt_estado.getText();
+        itens[18] = txt_pais.getText();
+        itens[19] = txt_CPF.getText();
+        itens[20] = txt_nomeRepresentante.getText();
+        itens[21] = txt_foneReprese.getText();
+
+        boolean val = mRegistro.alterar(itens);
+
+        if (val == true) {
+            JOptionPane.showMessageDialog(rootPane, "Alterado com sucesso");
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Erro ao alterar");
+        }
+
+        
     }
 
-    public void excluir() {
+    public void excluir() throws RemoteException, NotBoundException, MalformedURLException {
+        MensageiroRegistro mRegistro = null;
+        LocateRegistry.getRegistry("192.168.0.103");//F
+        mRegistro = (MensageiroRegistro) Naming.lookup("rmi://localhost:14003/MensageiroRegistro");
+
+        String[] itens = new String[22];
+
+        itens[0] = txt_CNPJ.getText();
+        itens[1] = txt_razaoSocial.getText();
+        itens[2] = txt_nomeFantasia.getText();
+        itens[3] = txt_telefone.getText();
+        itens[4] = txt_inscMunicipal.getText();
+        itens[5] = txt_inscEstadual.getText();
+        itens[6] = txt_email.getText();
+        itens[7] = txt_dataConstituicao.getText();
+        itens[8] = txt_atividadesDesenvolvidas.getText();
+        itens[9] = txt_generoAtividade.getText();
+        itens[10] = txt_especieAtividade.getText();
+        itens[11] = txt_CEP.getText();
+        itens[12] = txt_numero.getText();
+        itens[13] = txt_complemento.getText();
+        itens[14] = txt_logradouro.getText();
+        itens[15] = txt_bairro.getText();
+        itens[16] = txt_cidade.getText();
+        itens[17] = txt_estado.getText();
+        itens[18] = txt_pais.getText();
+        itens[19] = txt_CPF.getText();
+        itens[20] = txt_nomeRepresentante.getText();
+        itens[21] = txt_foneReprese.getText();
+
+        boolean val = mRegistro.excluir(itens);
+
+        if (val == true) {
+            JOptionPane.showMessageDialog(rootPane, "Excluido com sucesso");
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Erro ao excluir");
+        }
 
     }
 
@@ -588,10 +681,10 @@ public class FormRegistro extends javax.swing.JFrame {
         String[] itens = new String[22];
         itens = mRegistro.procurar(txt_CNPJ.getText());
 
-        //if (itens == null) {
-        //    JOptionPane.showMessageDialog(rootPane, itens);
-        //} else {
-
+        if (itens == null) {
+            JOptionPane.showMessageDialog(rootPane, "Nunhum cadastro encontrado");
+            return;
+        } else {
             txt_razaoSocial.setText(itens[1]);
             txt_nomeFantasia.setText(itens[2]);
             txt_telefone.setText(itens[3]);
@@ -613,7 +706,9 @@ public class FormRegistro extends javax.swing.JFrame {
             txt_CPF.setText(itens[19]);
             txt_nomeRepresentante.setText(itens[20]);
             txt_foneReprese.setText(itens[21]);
-        //}
+        }
+        
+        habilitarBotoes();
     }
 
     public void sair() {
@@ -705,6 +800,7 @@ public class FormRegistro extends javax.swing.JFrame {
         btn_excluir.setEnabled(true);
 
         btn_inserir.setEnabled(false);
+        txt_CNPJ.setEditable(false);
     }
 
     public void desabilitarBotoes() {
@@ -712,6 +808,7 @@ public class FormRegistro extends javax.swing.JFrame {
         btn_excluir.setEnabled(false);
 
         btn_inserir.setEnabled(true);
+        txt_CNPJ.setEditable(true);
     }
 
     public void limpar() {
@@ -735,6 +832,10 @@ public class FormRegistro extends javax.swing.JFrame {
         txt_pais.setText("");
         txt_razaoSocial.setText("");
         txt_telefone.setText("");
+        txt_logradouro.setText("");
+        txt_numero.setText("");
+
+        desabilitarBotoes();
 
     }
 
