@@ -33,7 +33,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         try {
             //MensageiroAcesso
             //LocateRegistry.getRegistry("127.0.0.1");
-            LocateRegistry.getRegistry("192.168.58.1");
+            LocateRegistry.getRegistry("192.168.56.1");
             menA = (MensageiroAcesso) Naming.lookup("rmi://localhost:14001/MensageiroAcesso");
 
             menA.sair();

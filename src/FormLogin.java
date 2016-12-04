@@ -117,6 +117,7 @@ public class FormLogin extends javax.swing.JFrame {
 
         MensageiroAcesso mAcesso = null;
         try {
+            LocateRegistry.getRegistry("192.168.56.1");//-----------------------
             mAcesso = (MensageiroAcesso) Naming.lookup("rmi://localhost:14001/MensageiroAcesso");
 
             if (mAcesso.entrar(txt_login.getText(), txt_senha.getText()) == true) {
