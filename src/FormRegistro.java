@@ -453,8 +453,16 @@ public class FormRegistro extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_procurarActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        preenchetabela();
-        //listar();//descomentar
+        try {
+
+            preenchetabela();
+
+            //listar();//descomentar
+        } catch (RemoteException | NotBoundException | MalformedURLException ex) {
+            Logger.getLogger(FormRegistro.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
     }//GEN-LAST:event_formWindowActivated
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -764,11 +772,7 @@ public class FormRegistro extends javax.swing.JFrame {
                 System.out.println(lTudo.toString());//apenas um teste
             }
 
-        } catch (RemoteException ex) {
-            Logger.getLogger(FormConsulta.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NotBoundException ex) {
-            Logger.getLogger(FormConsulta.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (MalformedURLException ex) {
+        } catch (RemoteException | NotBoundException | MalformedURLException ex) {
             Logger.getLogger(FormConsulta.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {
             System.out.println(ex);//pega tudo
@@ -776,34 +780,74 @@ public class FormRegistro extends javax.swing.JFrame {
 
     }
 
-    public void preenchetabela() {
+    public void preenchetabela() throws RemoteException, NotBoundException, MalformedURLException {
+        MensageiroRegistro mR = null;
+        LocateRegistry.getRegistry("192.168.56.1");//Fabio
+        mR = (MensageiroRegistro) Naming.lookup("rmi://localhost:14003/MensageiroRegistro");
+        Object[][] retorno = mR.listar();
+
         //Cabeçalho
         Vector cabecalho = new Vector();
+        cabecalho.add("CNPJ");
         cabecalho.add("Razão Social");
-        cabecalho.add("Endereço");
+        cabecalho.add("Nome Fantasia");
+        cabecalho.add("Telefone");
+        cabecalho.add("Inscrição Municipal");
+        cabecalho.add("Inscrição Estadual");
+        cabecalho.add("E-mail");
+        cabecalho.add("Data de Constituição");
+        cabecalho.add("Atividades Exercidas");
+        cabecalho.add("Gênero da Atividade");
+        //cabecalho.add("Espécie de Atividade");
+        cabecalho.add("CEP");
+        cabecalho.add("Número");
+        cabecalho.add("Complemento");
+        cabecalho.add("Logradouro");
         cabecalho.add("Bairro");
         cabecalho.add("Cidade");
         cabecalho.add("Estado");
         cabecalho.add("País");
-        cabecalho.add("CEP");
-        cabecalho.add("Telefone (DDD)");
-        cabecalho.add("CNPJ:");
-        cabecalho.add("Inscrição Estadual");
-        cabecalho.add("Inscrição Municipal");
-        cabecalho.add("E-mail");
-        cabecalho.add("Data de sua constituição");
-        cabecalho.add("Atividades desenvolvidas");
-        cabecalho.add("Gênero da atividade");
-        cabecalho.add("Espece da atividade");
-        cabecalho.add("Nome do Representante Legal");
-        cabecalho.add("CPF do representante");
-        cabecalho.add("Fone do representante");
+        cabecalho.add("Nome do representante");
 
         //Itens
         Vector dados = new Vector();
         Vector item = null;
 
-        dados.add(item);
+        if (retorno != null) {
+            System.out.println(retorno.length);
+            for (int i = 0; i < retorno.length; i++) {
+                item = new Vector();
+                
+                item.add(retorno[i][0]);
+                item.add(retorno[i][1]);
+                item.add(retorno[i][2]);
+                item.add(retorno[i][3]);
+                item.add(retorno[i][4]);
+                item.add(retorno[i][5]);
+                item.add(retorno[i][6]);
+                item.add(retorno[i][7]);
+                item.add(retorno[i][8]);
+                item.add(retorno[i][9]);
+                //item.add(retorno[i][10]);
+                item.add(retorno[i][11]);
+                item.add(retorno[i][12]);
+                item.add(retorno[i][13]);
+                item.add(retorno[i][14]);
+                item.add(retorno[i][15]);
+                item.add(retorno[i][16]);
+                item.add(retorno[i][17]);
+                item.add(retorno[i][18]);
+                //item.add(retorno[i][19]);
+                item.add(retorno[i][20]);
+                //item.add(retorno[i][21]);
+                
+                dados.add(item);
+
+            }
+        } else {
+            System.out.println("Sem resultados ou problema.");
+        }
+
         DefaultTableModel modeloTabela = new DefaultTableModel();
         modeloTabela.setDataVector(dados, cabecalho);
         tb_cadastrados.setModel(modeloTabela);

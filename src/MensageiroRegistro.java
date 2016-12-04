@@ -91,7 +91,7 @@ public interface MensageiroRegistro extends Remote {
      * @param senha Senha de usuário administrador
      * @throws java.rmi.RemoteException
      */
-    public abstract Object[][] listar(String usuario, String senha) throws RemoteException;
+    public abstract Object[][] listar() throws RemoteException;
     /**
      * Procura um item no banco de dados (com informações limitadas)
      * @param id Identificador do item a ser procurado

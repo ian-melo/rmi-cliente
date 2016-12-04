@@ -11,8 +11,8 @@ public class TesteMen {
 
     public static void main(String[] args) {
         //testaConsultaLim();//OK
-        //testaConsulta();
-        testaLocali();
+        testaConsulta();
+        //testaLocali();
     }
 
     public static void testaLocali() {
@@ -77,13 +77,13 @@ public class TesteMen {
             LocateRegistry.getRegistry("127.0.0.1");
             MensageiroRegistro menR = (MensageiroRegistro) Naming.lookup("rmi://localhost:14003/MensageiroRegistro");
 
-            /*
+            
              if(menA.entrar("admin", "123")) {
              System.out.println("Login efetuado com sucesso!!!");
              } else {
              System.out.println("Problema no login");
              //return;
-             }*/
+             }
             if (menV.isUsuarioLogado()) {
                 System.out.println("Sucesso na verificação!!!");
             } else {
