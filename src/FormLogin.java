@@ -10,6 +10,15 @@ import javax.swing.JOptionPane;
 
 public class FormLogin extends javax.swing.JFrame {
 
+    
+    public String getTxt_login() {
+        return txt_login.getText();
+    }
+
+    public String getTxt_senha() {
+        return txt_senha.getText();
+    }
+
     public FormLogin() {
         initComponents();
     }
@@ -121,11 +130,7 @@ public class FormLogin extends javax.swing.JFrame {
             mAcesso = (MensageiroAcesso) Naming.lookup("rmi://localhost:14001/MensageiroAcesso");
 
             if (mAcesso.entrar(txt_login.getText(), txt_senha.getText()) == true) {
-                JOptionPane.showMessageDialog(rootPane, "Acesso");
-                //FormPrincipal fPrincipal = new FormPrincipal();
-                //fPrincipal.setVisible(true);
-                
-                FormRegistro fRegistro = new FormRegistro();
+                FormRegistro fRegistro = new FormRegistro(this);//passando info entre forms
                 fRegistro.setVisible(true);
                 dispose();
             } else {
@@ -142,8 +147,8 @@ public class FormLogin extends javax.swing.JFrame {
     public void sair() {
 
     }
-    
-    public void limpa(){
+
+    public void limpa() {
         txt_login.setText("");
         txt_senha.setText("");
     }

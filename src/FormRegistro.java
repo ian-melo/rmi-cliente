@@ -13,7 +13,16 @@ import javax.swing.table.DefaultTableModel;
 
 public class FormRegistro extends javax.swing.JFrame {
 
-    public FormRegistro() {
+    private String usuario;
+    private String senha;
+
+    public FormRegistro(FormLogin fLogin) {
+
+        usuario = fLogin.getTxt_login();
+        senha = fLogin.getTxt_senha();
+
+        //System.out.println(usuario);
+        //System.out.println(senha);
         initComponents();
     }
 
@@ -476,13 +485,13 @@ public class FormRegistro extends javax.swing.JFrame {
         int val = JOptionPane.showConfirmDialog(rootPane, "Deseja mesmo alterar?");
         if (val == 0) {
             try {
-                
+
                 alterar();
                 desabilitarBotoes();
-                
+
             } catch (RemoteException | NotBoundException | MalformedURLException ex) {
                 Logger.getLogger(FormRegistro.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (Exception ex){
+            } catch (Exception ex) {
                 System.out.println(ex);
             }
             desabilitarBotoes();
@@ -528,9 +537,12 @@ public class FormRegistro extends javax.swing.JFrame {
 
     public void inserir() throws NotBoundException, RemoteException, MalformedURLException {
         MensageiroRegistro mRegistro = null;
-        LocateRegistry.getRegistry("192.168.56.1");//F
+        //LocateRegistry.getRegistry("192.168.0.103");//F
+        //LocateRegistry.getRegistry("192.168.56.1");
+        LocateRegistry.getRegistry("127.0.0.1");
+        //mRegistro = (MensageiroRegistro) Naming.lookup("rmi://localhost:14003/MensageiroRegistro");
         mRegistro = (MensageiroRegistro) Naming.lookup("rmi://localhost:14003/MensageiroRegistro");
-        //apenas um teste
+//apenas um teste
         String[] item = new String[22];                 //String[] retorno = new String[22];//testar conteudo
 
         item[0] = txt_CNPJ.getText();                   //retorno[0] = "51.728.712/0001-62";
@@ -556,7 +568,8 @@ public class FormRegistro extends javax.swing.JFrame {
         item[20] = txt_nomeRepresentante.getText();     //retorno[20] = "nome rep";
         item[21] = txt_foneReprese.getText();           //retorno[21] = "9999-8888";
 
-        boolean re = mRegistro.inserir(item);
+        boolean re = mRegistro.inserir(item, usuario, senha);//erro
+
         if (re == true) {
             JOptionPane.showMessageDialog(rootPane, "Dados inseridos com sucesso");
             limpar();
@@ -622,7 +635,7 @@ public class FormRegistro extends javax.swing.JFrame {
         itens[20] = txt_nomeRepresentante.getText();
         itens[21] = txt_foneReprese.getText();
 
-        boolean val = mRegistro.alterar(itens);
+        boolean val = mRegistro.alterar(itens, usuario, senha);
 
         if (val == true) {
             JOptionPane.showMessageDialog(rootPane, "Alterado com sucesso");
@@ -630,7 +643,6 @@ public class FormRegistro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Erro ao alterar");
         }
 
-        
     }
 
     public void excluir() throws RemoteException, NotBoundException, MalformedURLException {
@@ -663,7 +675,7 @@ public class FormRegistro extends javax.swing.JFrame {
         itens[20] = txt_nomeRepresentante.getText();
         itens[21] = txt_foneReprese.getText();
 
-        boolean val = mRegistro.excluir(itens);
+        boolean val = mRegistro.excluir(itens, usuario, senha);
 
         if (val == true) {
             JOptionPane.showMessageDialog(rootPane, "Excluido com sucesso");
@@ -674,12 +686,15 @@ public class FormRegistro extends javax.swing.JFrame {
     }
 
     public void procurar() throws RemoteException, NotBoundException, MalformedURLException {
-        MensageiroRegistro mRegistro = null;
-        LocateRegistry.getRegistry("192.168.0.103");//F
-        mRegistro = (MensageiroRegistro) Naming.lookup("rmi://localhost:14003/MensageiroRegistro");
+        //MensageiroRegistro mRegistro = null;
+
+        //LocateRegistry.getRegistry("192.168.0.103");//F
+        //LocateRegistry.getRegistry("192.168.56.1");//F
+        LocateRegistry.getRegistry("127.0.0.1");
+        MensageiroRegistro mRegistro = (MensageiroRegistro) Naming.lookup("rmi://localhost:14003/MensageiroRegistro");
 
         String[] itens = new String[22];
-        itens = mRegistro.procurar(txt_CNPJ.getText());
+        itens = mRegistro.procurar(txt_CNPJ.getText(), usuario, senha);
 
         if (itens == null) {
             JOptionPane.showMessageDialog(rootPane, "Nunhum cadastro encontrado");
@@ -707,7 +722,7 @@ public class FormRegistro extends javax.swing.JFrame {
             txt_nomeRepresentante.setText(itens[20]);
             txt_foneReprese.setText(itens[21]);
         }
-        
+
         habilitarBotoes();
     }
 
@@ -739,8 +754,7 @@ public class FormRegistro extends javax.swing.JFrame {
             Object[][] lTudo = new Object[25][20];
             mRegistro = (MensageiroRegistro) Naming.lookup("rmi://localhost:14003/MensageiroRegistro");
 
-            lTudo = mRegistro.listar();
-
+            //lTudo = mRegistro.listar();
             for (Object ver : lTudo) {
                 System.out.println(ver.toString());
 
