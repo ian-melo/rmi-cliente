@@ -479,6 +479,7 @@ public class FormRegistro extends javax.swing.JFrame {
 
                 excluir();
                 desabilitarBotoes();
+                limpar();
 
             } catch (RemoteException | NotBoundException | MalformedURLException ex) {
                 Logger.getLogger(FormRegistro.class.getName()).log(Level.SEVERE, null, ex);
@@ -545,8 +546,6 @@ public class FormRegistro extends javax.swing.JFrame {
 
     public void inserir() throws NotBoundException, RemoteException, MalformedURLException {
         MensageiroRegistro mRegistro = null;
-        //LocateRegistry.getRegistry("192.168.0.103");//F
-        //LocateRegistry.getRegistry("192.168.56.1");
         LocateRegistry.getRegistry("127.0.0.1");
         //mRegistro = (MensageiroRegistro) Naming.lookup("rmi://localhost:14003/MensageiroRegistro");
         mRegistro = (MensageiroRegistro) Naming.lookup("rmi://localhost:14003/MensageiroRegistro");
@@ -576,7 +575,7 @@ public class FormRegistro extends javax.swing.JFrame {
         item[20] = txt_nomeRepresentante.getText();     //retorno[20] = "nome rep";
         item[21] = txt_foneReprese.getText();           //retorno[21] = "9999-8888";
 
-        boolean re = mRegistro.inserir(item, usuario, senha);//erro
+        boolean re = mRegistro.inserir(item, usuario, senha);
 
         if (re == true) {
             JOptionPane.showMessageDialog(rootPane, "Dados inseridos com sucesso");
@@ -615,7 +614,8 @@ public class FormRegistro extends javax.swing.JFrame {
 
     public void alterar() throws RemoteException, NotBoundException, MalformedURLException {
         MensageiroRegistro mRegistro = null;
-        LocateRegistry.getRegistry("192.168.0.103");//F
+        //LocateRegistry.getRegistry("192.168.0.103");//F
+        LocateRegistry.getRegistry("127.0.0.1");
         mRegistro = (MensageiroRegistro) Naming.lookup("rmi://localhost:14003/MensageiroRegistro");
 
         String[] itens = new String[22];
@@ -655,7 +655,8 @@ public class FormRegistro extends javax.swing.JFrame {
 
     public void excluir() throws RemoteException, NotBoundException, MalformedURLException {
         MensageiroRegistro mRegistro = null;
-        LocateRegistry.getRegistry("192.168.0.103");//F
+        //LocateRegistry.getRegistry("192.168.0.103");//F
+        LocateRegistry.getRegistry("127.0.0.1");
         mRegistro = (MensageiroRegistro) Naming.lookup("rmi://localhost:14003/MensageiroRegistro");
 
         String[] itens = new String[22];
@@ -738,12 +739,16 @@ public class FormRegistro extends javax.swing.JFrame {
         MensageiroAcesso mAcesso = null;
         try {
             //MensageiroAcesso
-            //LocateRegistry.getRegistry("127.0.0.1");
+            LocateRegistry.getRegistry("127.0.0.1");
             //LocateRegistry.getRegistry("192.168.58.1");//F
-            LocateRegistry.getRegistry("192.168.56.1");//F
+            //LocateRegistry.getRegistry("192.168.56.1");//F
             mAcesso = (MensageiroAcesso) Naming.lookup("rmi://localhost:14001/MensageiroAcesso");
 
             mAcesso.sair();
+            
+            this.setVisible(false);
+            FormLogin fLogin = new FormLogin();
+            fLogin.setVisible(true);
 
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -756,9 +761,9 @@ public class FormRegistro extends javax.swing.JFrame {
         MensageiroRegistro mRegistro = null;
 
         try {
-            //LocateRegistry.getRegistry("127.0.0.1");
+            LocateRegistry.getRegistry("127.0.0.1");
             //LocateRegistry.getRegistry("192.168.58.1");//Fabio
-            LocateRegistry.getRegistry("192.168.56.1");//F
+            //LocateRegistry.getRegistry("192.168.56.1");//F
             Object[][] lTudo = new Object[25][20];
             mRegistro = (MensageiroRegistro) Naming.lookup("rmi://localhost:14003/MensageiroRegistro");
 
@@ -782,7 +787,8 @@ public class FormRegistro extends javax.swing.JFrame {
 
     public void preenchetabela() throws RemoteException, NotBoundException, MalformedURLException {
         MensageiroRegistro mR = null;
-        LocateRegistry.getRegistry("192.168.56.1");//Fabio
+        //LocateRegistry.getRegistry("192.168.56.1");//Fabio
+        LocateRegistry.getRegistry("127.0.0.1");
         mR = (MensageiroRegistro) Naming.lookup("rmi://localhost:14003/MensageiroRegistro");
         Object[][] retorno = mR.listar("adm","123");
 
@@ -814,7 +820,7 @@ public class FormRegistro extends javax.swing.JFrame {
         Vector item = null;
 
         if (retorno != null) {
-            System.out.println(retorno.length);
+            //System.out.println(retorno.length);
             for (int i = 0; i < retorno.length; i++) {
                 item = new Vector();
                 
