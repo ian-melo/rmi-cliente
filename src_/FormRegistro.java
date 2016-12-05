@@ -784,7 +784,7 @@ public class FormRegistro extends javax.swing.JFrame {
         MensageiroRegistro mR = null;
         LocateRegistry.getRegistry("192.168.56.1");//Fabio
         mR = (MensageiroRegistro) Naming.lookup("rmi://localhost:14003/MensageiroRegistro");
-        Object[][] retorno = mR.listar("adm","123");
+        Object[][] retorno = mR.listar();
 
         //Cabeçalho
         Vector cabecalho = new Vector();

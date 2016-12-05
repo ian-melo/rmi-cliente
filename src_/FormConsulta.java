@@ -358,7 +358,7 @@ public class FormConsulta extends javax.swing.JFrame {
 
         mR = (MensageiroRegistro) Naming.lookup("rmi://localhost:14003/MensageiroRegistro");
 
-        Object[][] retorno = mR.listar("adm","123");
+        Object[][] retorno = mR.listar();
 
         //Cabeçalho
         Vector cabecalho = new Vector();
@@ -433,7 +433,7 @@ public class FormConsulta extends javax.swing.JFrame {
 
             LocateRegistry.getRegistry("192.168.56.1");//Fabio
             mR = (MensageiroRegistro) Naming.lookup("rmi://localhost:14003/MensageiroRegistro");
-            Object[][] retorno = mR.listar("adm","123");
+            Object[][] retorno = mR.listar();
             valor = retorno.length;
 
         } catch (RemoteException ex) {
