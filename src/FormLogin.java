@@ -123,10 +123,9 @@ public class FormLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_logarActionPerformed
 
     public void entrar() {
-
-        MensageiroAcesso mAcesso = null;
         try {
-            LocateRegistry.getRegistry("192.168.56.1");//-----------------------
+            MensageiroAcesso mAcesso = null;
+            LocateRegistry.getRegistry("127.0.0.1");
             mAcesso = (MensageiroAcesso) Naming.lookup("rmi://localhost:14001/MensageiroAcesso");
 
             if (mAcesso.entrar(txt_login.getText(), txt_senha.getText()) == true) {
@@ -137,11 +136,9 @@ public class FormLogin extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Acesso negado");
                 limpa();
             }
-
         } catch (Exception ex) {
             Logger.getLogger(FormLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     public void sair() {

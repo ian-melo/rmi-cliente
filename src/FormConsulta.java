@@ -316,22 +316,19 @@ public class FormConsulta extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_voltarActionPerformed
 
     public void procurarLimitado() {
-        MensageiroRegistro mRegistro = null;
-
         try {
-            //LocateRegistry.getRegistry("127.0.0.1");
-            LocateRegistry.getRegistry("192.168.56.1");//Fabio
-            String[] res = new String[11];
+            MensageiroRegistro mRegistro = null;
+            LocateRegistry.getRegistry("127.0.0.1");
             mRegistro = (MensageiroRegistro) Naming.lookup("rmi://localhost:14003/MensageiroRegistro");
-
+            
+            String[] res;
             res = mRegistro.procurarLimitado(txt_cnpj.getText());
-
             if (res == null) {
                 JOptionPane.showMessageDialog(rootPane, "Nada encontrado");
                 return;
             }
 
-            txt_atividadesExercidas.setText(res[0]); //[0] - Atividades Exercidas
+            txt_atividadesExercidas.setText(res[0]);     //[0] - Atividades Exercidas
             txt_generoAtiv.setText(res[1]);              //[1] - Gênero da Atividade
             txt_especeAtiv.setText(res[2]);              //[2] - Espécie de Atividade
             txt_CEP.setText(res[3]);                     //[3] - CEP
@@ -353,24 +350,22 @@ public class FormConsulta extends javax.swing.JFrame {
 
     public void preenchetabela() throws RemoteException, NotBoundException, MalformedURLException {
         MensageiroRegistro mR = null;
-
-        LocateRegistry.getRegistry("192.168.56.1");//Fabio
-
+        LocateRegistry.getRegistry("127.0.0.1");
         mR = (MensageiroRegistro) Naming.lookup("rmi://localhost:14003/MensageiroRegistro");
-
+        
         Object[][] retorno = mR.listar("adm","123");
-
+        
         //Cabeçalho
         Vector cabecalho = new Vector();
         cabecalho.add("CEP");
         cabecalho.add("Logradouro");
         cabecalho.add("Atividades Exercidas");
         cabecalho.add("Telefone");
-
+        
         //Itens
         Vector dados = new Vector();
         Vector item = null;
-
+        
         if (retorno != null) {
             System.out.println(retorno.length);//11 - 14 - 8 - 3
             for (int i = 0; i < retorno.length; i++) {
@@ -385,12 +380,11 @@ public class FormConsulta extends javax.swing.JFrame {
                 for (int j = 0; j <= 21; j++) {
                     tu[i][j] = (String) retorno[i][j];//coloca os itens na matriz por linha<<<<<<<<<<<<<<<<<<<
                 }
-
             }
         } else {
             System.out.println("Sem resultados ou problema.");
         }
-
+        
         DefaultTableModel modeloTabela = new DefaultTableModel();
         modeloTabela.setDataVector(dados, cabecalho);
         tb_parcial.setModel(modeloTabela);
@@ -408,7 +402,6 @@ public class FormConsulta extends javax.swing.JFrame {
         txt_cidade.setText("");
         txt_estado.setText("");
         txt_pais.setText("");
-
     }
 
     public void preencheCampos(int linha) {
@@ -428,20 +421,17 @@ public class FormConsulta extends javax.swing.JFrame {
 
     public int verificaTamanho() {//vai dar erro se for zero
         int valor = 0;
-        MensageiroRegistro mR = null;
         try {
-
-            LocateRegistry.getRegistry("192.168.56.1");//Fabio
+            MensageiroRegistro mR = null;
+            LocateRegistry.getRegistry("127.0.0.1");
             mR = (MensageiroRegistro) Naming.lookup("rmi://localhost:14003/MensageiroRegistro");
             Object[][] retorno = mR.listar("adm","123");
             valor = retorno.length;
-
         } catch (RemoteException ex) {
             Logger.getLogger(FormConsulta.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {
             System.out.println(ex);//tudo
         }
-
         return valor;
     }
 

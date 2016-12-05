@@ -60,15 +60,11 @@ public class FormPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
     
     public void sair() {
-        MensageiroAcesso menA = null;
         try {
-            //MensageiroAcesso
-            //LocateRegistry.getRegistry("127.0.0.1");
-            LocateRegistry.getRegistry("192.168.56.1");
+            MensageiroAcesso menA = null;
+            LocateRegistry.getRegistry("127.0.0.1");
             menA = (MensageiroAcesso) Naming.lookup("rmi://localhost:14001/MensageiroAcesso");
-            
             menA.sair();
-            
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             System.exit(1);
