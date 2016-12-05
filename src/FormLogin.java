@@ -1,4 +1,6 @@
 
+import java.awt.Color;
+import java.awt.Font;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
@@ -21,6 +23,22 @@ public class FormLogin extends javax.swing.JFrame {
 
     public FormLogin() {
         initComponents();
+        
+        getContentPane().setBackground(new Color(000,139,139));
+        Font f;
+        f = new Font(null, 1, 15);
+        
+        jLabel1.setFont(f);
+        jLabel2.setFont(f);
+        jLabel3.setFont(f);
+        jLabel4.setFont(f);
+
+        jLabel1.setForeground(Color.white);
+        jLabel2.setForeground(Color.white);
+        jLabel3.setForeground(Color.white);
+        jLabel4.setForeground(Color.white);
+      
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -37,6 +55,7 @@ public class FormLogin extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login");
 
         btn_logar.setText("Logar");
         btn_logar.addActionListener(new java.awt.event.ActionListener() {
@@ -84,7 +103,7 @@ public class FormLogin extends javax.swing.JFrame {
                             .addGap(50, 50, 50)
                             .addComponent(btn_convidado)
                             .addGap(5, 5, 5))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

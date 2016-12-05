@@ -1,4 +1,6 @@
 
+import java.awt.Color;
+import java.awt.Font;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
@@ -16,6 +18,54 @@ public class FormConsulta extends javax.swing.JFrame {
 
     public FormConsulta() {
         initComponents();
+        
+        getContentPane().setBackground(new Color(000,139,139));
+        Font f;
+        f = new Font(null, 1, 15);
+        
+        jLabel1.setFont(f);
+        jLabel2.setFont(f);
+        jLabel3.setFont(f);
+        jLabel4.setFont(f);
+        jLabel5.setFont(f);
+        jLabel6.setFont(f);
+        jLabel7.setFont(f);
+        jLabel8.setFont(f);
+        jLabel9.setFont(f);
+        jLabel10.setFont(f);
+        jLabel11.setFont(f);
+        jLabel12.setFont(f);
+        jLabel13.setFont(f);
+        
+        jLabel1.setForeground(Color.white);
+        jLabel2.setForeground(Color.white);
+        jLabel3.setForeground(Color.white);
+        jLabel4.setForeground(Color.white);
+        jLabel5.setForeground(Color.white);
+        jLabel6.setForeground(Color.white);
+        jLabel7.setForeground(Color.white);
+        jLabel8.setForeground(Color.white);
+        jLabel9.setForeground(Color.white);
+        jLabel10.setForeground(Color.white);
+        jLabel11.setForeground(Color.white);
+        jLabel12.setForeground(Color.white);
+        jLabel13.setForeground(Color.white);
+        
+        
+        txt_CEP.setEditable(false);
+        txt_atividadesExercidas.setEditable(false);
+        txt_bairro.setEditable(false);
+        txt_cidade.setEditable(false);
+        
+        txt_comple.setEditable(false);
+        txt_especeAtiv.setEditable(false);
+        txt_estado.setEditable(false);
+        txt_generoAtiv.setEditable(false);
+        txt_logradouro.setEditable(false);
+        txt_numero.setEditable(false);
+        txt_pais.setEditable(false);
+ 
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -53,6 +103,7 @@ public class FormConsulta extends javax.swing.JFrame {
         btn_voltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Consulta");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -148,7 +199,7 @@ public class FormConsulta extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel11)
@@ -156,9 +207,7 @@ public class FormConsulta extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txt_cnpj)
                                     .addComponent(txt_logradouro, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE))
-                                .addGap(46, 46, 46)
-                                .addComponent(jLabel12)
-                                .addGap(201, 201, 201))
+                                .addGap(291, 291, 291))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -166,7 +215,10 @@ public class FormConsulta extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txt_numero, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt_numero, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -1,4 +1,6 @@
 
+import java.awt.Color;
+import java.awt.Font;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
@@ -24,6 +26,63 @@ public class FormRegistro extends javax.swing.JFrame {
         //System.out.println(usuario);
         //System.out.println(senha);
         initComponents();
+        getContentPane().setBackground(new Color(000,139,139));
+        
+        Font f;
+        f = new Font(null, 1, 15);
+        
+        jLabel1.setFont(f);
+        jLabel2.setFont(f);
+        jLabel3.setFont(f);
+        jLabel4.setFont(f);
+        jLabel5.setFont(f);
+        jLabel6.setFont(f);
+        jLabel7.setFont(f);
+        jLabel8.setFont(f);
+        
+        jLabel9.setFont(f);
+        jLabel10.setFont(f);
+        jLabel11.setFont(f);
+        jLabel12.setFont(f);
+        jLabel13.setFont(f);
+        jLabel14.setFont(f);
+        jLabel15.setFont(f);
+        jLabel16.setFont(f);
+        
+        jLabel17.setFont(f);
+        jLabel18.setFont(f);
+        jLabel19.setFont(f);
+        jLabel20.setFont(f);
+        jLabel22.setFont(f);
+        jLabel23.setFont(f);
+        
+       
+        
+        jLabel1.setForeground(Color.white);
+        jLabel2.setForeground(Color.white);
+        jLabel3.setForeground(Color.white);
+        jLabel4.setForeground(Color.white);
+        jLabel5.setForeground(Color.white);
+        jLabel6.setForeground(Color.white);
+        jLabel7.setForeground(Color.white);
+        jLabel8.setForeground(Color.white);
+        
+        jLabel9.setForeground(Color.white);
+        jLabel10.setForeground(Color.white);
+        jLabel11.setForeground(Color.white);
+        jLabel12.setForeground(Color.white);
+        jLabel13.setForeground(Color.white);
+        jLabel14.setForeground(Color.white);
+        jLabel15.setForeground(Color.white);
+        jLabel16.setForeground(Color.white);
+        
+        jLabel17.setForeground(Color.white);
+        jLabel18.setForeground(Color.white);
+        jLabel19.setForeground(Color.white);
+        jLabel20.setForeground(Color.white);
+        jLabel22.setForeground(Color.white);
+        jLabel23.setForeground(Color.white);
+  
     }
 
     @SuppressWarnings("unchecked")
@@ -84,6 +143,7 @@ public class FormRegistro extends javax.swing.JFrame {
         txt_logradouro = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cadastro de Pessoa Juridica");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -335,7 +395,7 @@ public class FormRegistro extends javax.swing.JFrame {
                                 .addComponent(jLabel22)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txt_numero, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(10, 10, 10)
