@@ -56,6 +56,7 @@ public class FormLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
+        setResizable(false);
 
         btn_logar.setText("Logar");
         btn_logar.addActionListener(new java.awt.event.ActionListener() {
